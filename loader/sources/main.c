@@ -1,6 +1,6 @@
 // SPDX-FileCopyrightText: 2025 The UniversalLoader development team
 //
-// SPDX-License-Identifier: CC0-1.0
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 #include <stdio.h>
 
