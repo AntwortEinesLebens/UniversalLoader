@@ -1,0 +1,13 @@
+# SPDX-FileCopyrightText: 2025 The UniversalLoader development team
+#
+# SPDX-License-Identifier: CC0-1.0
+
+build/
+
+.cache/
+.ccls-cache/
+vscode/
+
+subprojects/*
+!subprojects/*.wrap
+!subprojects/packagefiles/
