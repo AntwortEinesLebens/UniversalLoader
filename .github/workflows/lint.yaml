@@ -37,4 +37,4 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Lint Markdown code
-        uses: DavidAnson/markdownlint-cli2-action@v19
+        uses: DavidAnson/markdownlint-cli2-action@v20
