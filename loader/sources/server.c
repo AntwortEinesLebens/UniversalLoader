@@ -55,7 +55,8 @@ int downloadPayload(int sockfd, char *path) {
 
     return -1;
   }
-  ssize_t recieved = read(sockfd, buffer, 600);
+
+  read(sockfd, buffer, 600);
 
   printf("[i] web server send us -> %s", buffer + 201);
 

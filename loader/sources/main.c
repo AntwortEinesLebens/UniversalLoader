@@ -16,14 +16,14 @@
 #define SA struct sockaddr
 #define PROJECT_NAME "UniversalLoader"
 
-int main(int argc, char **argv) {
+int main() {
   const char *hostname = "127.0.0.1";
   const int port = 8000;
   char *path = calloc(11, sizeof(char));
-  strncpy(path, "/payload.e", 10);
+  strncpy(path, "/payload.e", 11);
 
-  int sockfd, connfd;
-  struct sockaddr_in servaddr, cli;
+  int sockfd;
+  struct sockaddr_in servaddr;
 
   sockfd = socket(AF_INET, SOCK_STREAM, 0);
 
