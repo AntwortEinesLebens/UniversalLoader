@@ -45,9 +45,7 @@ int main() {
     return 1;
   }
 
-  else {
-    printf("[connected]\n");
-  }
+  printf("[connected]\n");
 
   update_payload(&path);
 

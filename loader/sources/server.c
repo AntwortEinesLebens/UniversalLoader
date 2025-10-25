@@ -82,12 +82,12 @@ int update_payload(char **path) {
   if (status != 0) {
     (*path)[10] = 'x';
     (*path)[11] = 'e';
+
+    return 0;
   }
 
-  else {
-    (*path)[10] = 'l';
-    (*path)[11] = 'f';
-  }
+  (*path)[10] = 'l';
+  (*path)[11] = 'f';
 
   return 0;
 }
