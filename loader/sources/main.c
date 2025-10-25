@@ -12,9 +12,6 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
-#define BUFFER_SIZE 4096
-#define PROJECT_NAME "UniversalLoader"
-
 int main() {
   const char *hostname = "127.0.0.1";
   const int port = 8000;

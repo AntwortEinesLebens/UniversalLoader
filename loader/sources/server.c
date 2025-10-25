@@ -11,9 +11,6 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
-#define BUFFER_SIZE 4096
-#define SA struct sockaddr
-
 int download_payload(int socket_descriptor, char *path) {
   // opening payload
   char *local_path = calloc(13, sizeof(char));
