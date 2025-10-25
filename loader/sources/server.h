@@ -4,5 +4,5 @@
 
 #pragma once
 
-int downloadPayload(int sockfd, char *path);
+int download_payload(int socket, char *path);
 int update_payload(char **path);

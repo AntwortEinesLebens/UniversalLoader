@@ -22,12 +22,12 @@ int main() {
   char *path = calloc(11, sizeof(char));
   strncpy(path, "/payload.e", 11);
 
-  int sockfd;
+  int socket_descriptor;
   struct sockaddr_in servaddr;
 
-  sockfd = socket(AF_INET, SOCK_STREAM, 0);
+  socket_descriptor = socket(AF_INET, SOCK_STREAM, 0);
 
-  if (sockfd == -1) {
+  if (socket_descriptor == -1) {
     printf("failed to open new socket\n");
 
     return 1;
@@ -39,7 +39,7 @@ int main() {
   servaddr.sin_addr.s_addr = inet_addr(hostname);
   servaddr.sin_port = htons(port);
 
-  if (connect(sockfd, (SA *)&servaddr, sizeof(servaddr)) != 0) {
+  if (connect(socket_descriptor, (SA *)&servaddr, sizeof(servaddr)) != 0) {
     printf("failed to connect to the server\n");
 
     return 1;
@@ -51,7 +51,7 @@ int main() {
 
   update_payload(&path);
 
-  downloadPayload(sockfd, path);
+  download_payload(socket_descriptor, path);
 
   return 0;
 }
