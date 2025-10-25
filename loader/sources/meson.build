@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: CC0-1.0
 
-sources = files('./main.c')
+sources = files('./main.c', './server.c')
 dependencies = []
 executable(
   'loader',
