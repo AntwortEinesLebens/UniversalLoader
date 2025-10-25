@@ -13,7 +13,6 @@
 #include <unistd.h>
 
 #define BUFFER_SIZE 4096
-#define SA struct sockaddr
 #define PROJECT_NAME "UniversalLoader"
 
 int main() {
@@ -39,7 +38,8 @@ int main() {
   servaddr.sin_addr.s_addr = inet_addr(hostname);
   servaddr.sin_port = htons(port);
 
-  if (connect(socket_descriptor, (SA *)&servaddr, sizeof(servaddr)) != 0) {
+  if (connect(socket_descriptor, (struct sockaddr *)&servaddr,
+              sizeof(servaddr)) != 0) {
     printf("failed to connect to the server\n");
 
     return 1;
