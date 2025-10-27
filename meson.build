@@ -6,7 +6,6 @@ project(
   'UniversalLoader',
   'c',
   default_options: [
-    'b_coverage=false',
     'c_std=c23',
     'warning_level=3',
     'werror=true',
@@ -18,6 +17,3 @@ project(
 )
 
 subdir('./loader/')
-
-
-
