@@ -5,7 +5,7 @@
 sources = files('./main.c')
 dependencies = [facil.get_variable('facil_dep')]
 executable(
-  'server',
+  'server.com',
   sources,
   dependencies: dependencies,
 )
