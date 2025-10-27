@@ -19,7 +19,7 @@ project(
   version: '0.0.1',
 )
 
+facil = subproject('facil', default_options: ['werror=false'])
+
 subdir('./loader/')
-
-
-
+subdir('./server/')
