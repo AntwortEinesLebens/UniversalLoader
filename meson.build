@@ -10,6 +10,8 @@ project(
     'c_std=c23',
     'warning_level=3',
     'werror=true',
+    'default_both_libraries=static',
+    'default_library=static',
   ],
   license: 'GPL-3.0-or-later',
   license_files: './LICENSES/GPL-3.0-or-later.txt',
