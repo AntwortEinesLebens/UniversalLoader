@@ -24,8 +24,8 @@ int main() {
 void send_payload(http_s *request);
 
 void dispatcher(http_s *request) {
-  char *method = fiobj_obj2cstr(request->method).data;
-  char *path = fiobj_obj2cstr(request->path).data;
+  const char *method = fiobj_obj2cstr(request->method).data;
+  const char *path = fiobj_obj2cstr(request->path).data;
 
   if (strcmp(method, "GET") == 0 && strcmp(path, "/payload") == 0) {
     send_payload(request);
@@ -49,40 +49,46 @@ void send_payload(http_s *request) {
     return;
   }
 
-  char *operating_system_data = fiobj_obj2cstr(operating_system).data;
+  const char *operating_system_data = fiobj_obj2cstr(operating_system).data;
 
   if (strcmp(operating_system_data, "linux") == 0) {
-    http_send_body(request, LINUX_PAYLOAD, strlen(LINUX_PAYLOAD));
+    char *linux_payload = getenv("LINUX_PAYLOAD");
+    http_send_body(request, linux_payload, strlen(linux_payload));
 
     return;
   }
 
   if (strcmp(operating_system_data, "mac") == 0) {
-    http_send_body(request, MAC_PAYLOAD, strlen(MAC_PAYLOAD));
+    char *mac_payload = getenv("MAC_PAYLOAD");
+    http_send_body(request, mac_payload, strlen(mac_payload));
 
     return;
   }
 
   if (strcmp(operating_system_data, "windows") == 0) {
-    http_send_body(request, WINDOWS_PAYLOAD, strlen(WINDOWS_PAYLOAD));
+    char *windows_payload = getenv("WINDOWS_PAYLOAD");
+    http_send_body(request, windows_payload, strlen(windows_payload));
 
     return;
   }
 
   if (strcmp(operating_system_data, "freebsd") == 0) {
-    http_send_body(request, FREEBSD_PAYLOAD, strlen(FREEBSD_PAYLOAD));
+    char *freebsd_payload = getenv("FREEBSD_PAYLOAD");
+    http_send_body(request, freebsd_payload, strlen(freebsd_payload));
 
     return;
   }
 
   if (strcmp(operating_system_data, "openbsd") == 0) {
-    http_send_body(request, OPENBSD_PAYLOAD, strlen(OPENBSD_PAYLOAD));
+    char *openbsd_payload = getenv("OPENBSD_PAYLOAD");
+    http_send_body(request, openbsd_payload, strlen(openbsd_payload));
 
     return;
   }
 
   if (strcmp(operating_system_data, "netbsd") == 0) {
-    http_send_body(request, NETBSD_PAYLOAD, strlen(NETBSD_PAYLOAD));
+    char *netbsd_payload = getenv("NETBSD_PAYLOAD");
+    http_send_body(request, netbsd_payload, strlen(netbsd_payload));
 
     return;
   }
