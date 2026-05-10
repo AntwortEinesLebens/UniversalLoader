@@ -5,7 +5,7 @@
 sources = files('./main.c')
 dependencies = []
 executable(
-  'loader',
+  'loader.com',
   sources,
   dependencies: dependencies,
 )
