@@ -10,4 +10,5 @@ vscode/
 
 subprojects/*
 !subprojects/*.wrap
+!subprojects/*.wrap.license
 !subprojects/packagefiles/
